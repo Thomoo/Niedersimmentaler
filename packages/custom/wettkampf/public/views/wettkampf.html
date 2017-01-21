@@ -1,0 +1,43 @@
+<div data-ng-controller="WettkampfController" data-ng-init="loadWettkampf()">
+  <h1>Administration</h1>
+
+  <!-- Wettkampf verwalten -->
+  <form name="wettkampfVerwaltenForm" data-ng-submit="saveWettkampf(wettkampfVerwaltenForm.$valid)" novalidate>
+    <fieldset class='form-horizontal well'>
+      <legend>
+        Wettkampf verwalten
+      </legend>
+      <div class="form-group">
+        <label for="wettkampftitel" class="col-md-4 control-label">Wettkampftitel</label>
+        <div class="col-md-8">
+          <input required id="wettkampftitel" type="text" data-ng-model="wettkampf.title" name="wettkampftitel" placeholder="Titel" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="infoTextInactive" class="col-md-4 control-label">Info Text Anmeldung inaktiv</label>
+        <div class="col-md-8">
+          <textarea name="infoTextInactive" data-ng-model="wettkampf.infoTextInactive" id="infoTextInactive" placeholder="Bitte Text hier eingeben" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="infoTextActive" class="col-md-4 control-label">Info Text Anmeldung aktiv</label>
+        <div class="col-md-8">
+          <textarea name="infoTextActive" data-ng-model="wettkampf.infoTextActive" id="infoTextActive" placeholder="Bitte Text hier eingeben" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="aktivieren" class="col-md-4 control-label">Anmeldung aktivieren</label>
+        <div class="col-md-8">
+          <input name="aktivieren" data-ng-model="wettkampf.anmeldungActive" id="aktivieren" type="checkbox" class="checkbox" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" name="saveWettkampf" id="saveWettkampf" data-color="green" data-size="s" data-style="expand-left">
+        <span>Speichern</span>
+      </button>
+    </fieldset>
+  </form>
+
+</div>
+

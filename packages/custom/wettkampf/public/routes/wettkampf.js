@@ -2,12 +2,9 @@
     'use strict';
 
     function Wettkampf($stateProvider) {
-        $stateProvider.state('wettkampf example page', {
-            url: '/wettkampf/example',
-            templateUrl: 'wettkampf/views/index.html'
-        }).state('wettkampf circles example', {
-            url: '/wettkampf/example/:circle',
-            templateUrl: 'wettkampf/views/example.html'
+        $stateProvider.state('wettkampf', {
+          url: '/wettkampf',
+          templateUrl: 'wettkampf/views/wettkampf.html'
         });
     }
 

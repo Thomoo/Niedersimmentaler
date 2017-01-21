@@ -19,7 +19,7 @@ Wettkampf.register(function(app, auth, database, circles) {
   //We are adding a link to the main menu for all authenticated users
   Wettkampf.menus.add({
     title: 'Wettkampf',
-    link: 'wettkampf example page',
+    link: 'wettkampf',
     roles: ['authenticated'],
     menu: 'main'
   });

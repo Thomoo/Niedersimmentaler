@@ -3,7 +3,7 @@
 
     /* jshint -W098 */
 
-    function WettkampfController($scope, Global, Wettkampf, $stateParams) {
+    function WettkampfController($scope, Global, Wettkampf, $log, $stateParams) {
         $scope.global = Global;
         $scope.package = {
             name: 'wettkampf'
@@ -18,12 +18,34 @@
                 $scope.resStatus = 'danger';
             });
         };
+
+        $scope.loadWettkampf = function(cb) {
+          $log.info('loadWettkampf in administration called...');
+          Wettkampf.get({
+          }, function(wettkampf) {
+            $scope.wettkampf = wettkampf;
+            if (cb) {
+              cb();
+            }
+          });
+        };
+
+        $scope.saveWettkampf = function() {
+          $log.info('saveWettkampf in administration called...');
+          var wettkampf = new Wettkampf({
+            title : $scope.wettkampf.title,
+            infoTextActive : $scope.wettkampf.infoTextActive,
+            infoTextInactive : $scope.wettkampf.infoTextInactive,
+            anmeldungActive : $scope.wettkampf.anmeldungActive
+          });
+          wettkampf.$save();
+        };
     }
 
     angular
         .module('mean.wettkampf')
         .controller('WettkampfController', WettkampfController);
 
-    WettkampfController.$inject = ['$scope', 'Global', 'Wettkampf', '$stateParams'];
+    WettkampfController.$inject = ['$scope', 'Global', 'Wettkampf', '$log', '$stateParams'];
 
 })();
