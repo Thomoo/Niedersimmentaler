@@ -20,7 +20,7 @@
         };
 
         $scope.loadWettkampf = function(cb) {
-          $log.info('loadWettkampf in administration called...');
+          $log.info('load Wettkampf...');
           Wettkampf.get({
           }, function(wettkampf) {
             $scope.wettkampf = wettkampf;
@@ -31,7 +31,7 @@
         };
 
         $scope.saveWettkampf = function() {
-          $log.info('saveWettkampf in administration called...');
+          $log.info('save Wettkampf...');
           var wettkampf = new Wettkampf({
             title : $scope.wettkampf.title,
             infoTextActive : $scope.wettkampf.infoTextActive,
