@@ -1,0 +1,16 @@
+{
+  "name": "disziplin",
+  "version": "0.0.1",
+  "description": "Some description of disziplin",
+  "author": {
+    "name": "mean scaffold"
+  },
+  "mean": "0.7.0",
+  "dependencies": {
+    "angular-xeditable": "0.6.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "postinstall" : "bower install"
+  }
+}
