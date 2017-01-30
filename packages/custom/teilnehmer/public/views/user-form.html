@@ -1,0 +1,180 @@
+<div id="user-form">
+	<fieldset class='form-horizontal well'>
+		<legend>
+			Personalien
+		</legend>
+		<div class="form-group">
+			<label for="gender-radios" class="col-md-4 control-label">Geschlecht*</label>
+			<div class="col-md-8" id="gender-radios">
+				<label for="female">weiblich</label>
+				<input ng-model="teilnehmer.gender"
+					ng-disabled="readonly"
+					required id="female"
+					type="radio"
+					name="geschlecht"
+					value="female"/>
+				<label for="male" >männlich</label>
+				<input ng-model="teilnehmer.gender"
+					ng-disabled="readonly"
+					required
+					id="male"
+					type="radio"
+					name="geschlecht"
+					value="male"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-md-4 control-label">Name*</label>
+			<div class="col-md-8">
+				<input name="name"
+					ng-model="teilnehmer.name"
+					ng-readonly="readonly"
+					required
+					id="name"
+					type="text"
+					placeholder="Name"
+					class="form-control"
+					msg-required="Der Name ist ein Pflichtfeld!"
+					xt-validate />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="vorname" class="col-md-4 control-label">Vorname*</label>
+			<div class="col-md-8">
+				<input name="vorname"
+					ng-model="teilnehmer.firstname"
+					ng-readonly="readonly"
+					required id="vorname"
+					type="text"
+					placeholder="Vorname"
+					class="form-control"
+					msg-required="Der Vorname ist ein Pflichtfeld!"
+					xt-validate />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="adresse" class="col-md-4 control-label">Adresse*</label>
+			<div class="col-md-8">
+				<input name="adresse"
+					ng-model="teilnehmer.address"
+					ng-readonly="readonly"
+					required id="adresse"
+					type="text"
+					placeholder="Adresse"
+					class="form-control"
+					msg-required="Die Adresse ist ein Pflichtfeld!"
+					xt-validate />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="zip" class="col-md-4 control-label">PLZ*</label>
+			<div class="col-md-8">
+				<input name="zip"
+					ng-model="teilnehmer.zip"
+					ng-readonly="readonly"
+					required
+					id="zip"
+					type="number"
+					min="1000"
+					max="9999"
+					maxlength="4"
+					placeholder="PLZ"
+					class="form-control"
+					xt-validate
+					msg-required="Die Postleitzahl ist ein Pflichtfeld!"
+					msg-number="Die Postleitzahl muss eine Nummer sein!" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="location" class="col-md-4 control-label">Ort*</label>
+			<div class="col-md-8">
+				<input name="location"
+					ng-model="teilnehmer.location"
+					ng-readonly="readonly"
+					required id="location"
+					type="text"
+					placeholder="Ort"
+					class="form-control"
+					xt-validate
+					msg-required="Der Ort ist ein Pflichtfeld!" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="verein" class="col-md-4 control-label">Verein</label>
+			<div class="col-md-8">
+				<input name="verein"
+					ng-model="teilnehmer.society"
+					ng-readonly="readonly"
+					id="verein"
+					type="text"
+					placeholder="Verein"
+					class="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email" class="col-md-4 control-label">Email*</label>
+			<div class="col-md-8">
+				<input name="email"
+					ng-model="teilnehmer.email"
+					ng-readonly="readonly"
+					required id="email"
+					type="email"
+					placeholder="Email"
+					class="form-control"
+					xt-validate
+					msg-required="Die Email Adresse ist ein Pflichtfeld!"
+					msg-email="Bitte eine gültige Email Adresse eingeben!" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="geburtstag" class="col-md-4 control-label">Geburtsdatum (z.B. 02.03.2003)*</label>
+			<div class="col-md-8">
+				<input name="geburtstag"
+					type="text"
+					placeholder="dd.mm.yyyy"
+					class="form-control"
+					maxlength="10"
+					ng-model="teilnehmer.birthdate"
+					ng-readonly="readonly"
+					ng-required="true"
+					xt-validate
+					msg-required="Das Geburtsdatum ist ein Pflichtfeld!"
+					msg-date="Bitte ein gültiges Geburtsdatum eingeben!" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">* Pflichtfelder</label>
+		</div>
+	</fieldset>
+	<fieldset class='competitions-table form-horizontal well'>
+		<legend>
+			Wettkämpfe
+		</legend>
+		<div class="form-group">
+			<div class="col-md-8 col-md-offset-4">
+				<table class="table table-bordered table-striped">
+					<tr id="heading">
+						<th width="5%">Teilnahme</th>
+						<th width="20%">Disziplin</th>
+						<th width="10%">Resultat</th>
+						<th width="5%">Rang</th>
+						<th width="3%" ng-show="showAward" >Q</th>
+					</tr>
+					<tr ng-repeat="discipline in $parent.allDisciplines | filter:$parent.isPossibleDiscipline">
+						<td>
+							<input type="checkbox" ng-disabled="readonly" ng-model="discipline.declared">
+						</td>
+						<td>{{discipline.disziplin}}</td>
+						<td><div ng-if="discipline.result">
+							{{discipline.formatFnc(discipline.result)}}
+						</div></td>
+						<td>{{discipline.rank}}</td>
+						<td ng-show="showAward">
+							<input ng-disabled="readonly" type="text" maxlength="2" class="form-control" ng-model="discipline.award">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</fieldset>
+</div>

@@ -1,20 +1,36 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    function Teilnehmer($stateProvider) {
-        $stateProvider.state('teilnehmer example page', {
-            url: '/teilnehmer/example',
-            templateUrl: 'teilnehmer/views/index.html'
-        }).state('teilnehmer circles example', {
-            url: '/teilnehmer/example/:circle',
-            templateUrl: 'teilnehmer/views/example.html'
-        });
-    }
+  function Teilnehmer($stateProvider) {
 
-    angular
-        .module('mean.teilnehmer')
-        .config(Teilnehmer);
+    $stateProvider.state('anmeldung', {
+      url: '/teilnehmer/subscription',
+      templateUrl: 'teilnehmer/views/subscription.html'
+    }).state('confirm subscription', {
+      url: '/teilnehmer/subscription/confirmation',
+      templateUrl: 'teilnehmer/views/subscription-confirmation.html'
+    }).state('edit subscription by id', {
+      url: '/teilnehmer/subscription/:competitorId',
+      templateUrl: 'teilnehmer/views/edit-subscription.html'
+    }).state('teilnehmerverwaltung', {
+      url: '/teilnehmer/administration',
+      templateUrl: 'teilnehmer/views/verwaltung.html',
+      // resolve: {
+      //   loggedin: isCompetitorAdmin
+      // }
+    }).state('edit competitor by id', {
+      url: '/teilnehmer/:teilnehmerId',
+      templateUrl: 'teilnehmer/views/edit-competitor.html',
+      // resolve: {
+      //   loggedin: isCompetitorAdmin
+      // }
+    });
+  }
 
-    Teilnehmer.$inject = ['$stateProvider'];
+  angular
+    .module('mean.teilnehmer')
+    .config(Teilnehmer);
+
+  Teilnehmer.$inject = ['$stateProvider'];
 
 })();
