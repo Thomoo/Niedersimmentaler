@@ -3,7 +3,9 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'), Disziplin = mongoose.model('Disziplin'), _ = require('lodash');
+var mongoose = require('mongoose'),
+    Disziplin = mongoose.model('Disziplin'),
+    _ = require('lodash');
 
 /**
  * Find disziplin by id
@@ -84,4 +86,4 @@ exports.all = function(req, res) {
 		res.json(disziplins);
 
 	});
-}; 
+};
