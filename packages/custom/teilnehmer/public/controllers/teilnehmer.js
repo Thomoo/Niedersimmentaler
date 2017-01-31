@@ -3,7 +3,7 @@
 
   /* jshint -W098 */
 
-  function TeilnehmerController($scope, Global, Teilnehmer, $stateParams, $log, Wettkampf, Disziplin) {
+  function TeilnehmerController($scope, Global, Teilnehmer, $stateParams, $location, $log, Wettkampf, Disziplin) {
     $scope.global = Global;
     $scope.package = {
       name: 'teilnehmer'
@@ -104,7 +104,7 @@
 
     $scope.findOne = function() {
       $log.info('find teilnehmer called... with: ' + $stateParams.teilnehmerId);
-      Competitor.get({
+      Teilnehmer.get({
         teilnehmerId : $stateParams.teilnehmerId
       }, function(teilnehmer) {
         $scope.teilnehmer = teilnehmer;
@@ -209,6 +209,6 @@
     .module('mean.teilnehmer')
     .controller('TeilnehmerController', TeilnehmerController);
 
-  TeilnehmerController.$inject = ['$scope', 'Global', 'Teilnehmer', '$stateParams', '$log', 'Wettkampf', 'Disziplin'];
+  TeilnehmerController.$inject = ['$scope', 'Global', 'Teilnehmer', '$stateParams', '$location', '$log', 'Wettkampf', 'Disziplin'];
 
 })();
