@@ -1,41 +1,33 @@
-<div data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplins()">
-  <md-content layout="row" flex layout-align="space-around center" layout-padding>
-    <md-card flex="50">
-
-      <md-card-content md-padding>
-        <h2>{{wettkampf.title}}</h2>
-      </md-card-content>
-      <md-divider></md-divider>
-      <md-card-content md-padding>
-        <p class="md-heading">Information:</p>
-        <div ng-show="wettkampf.anmeldungActive">
-          {{wettkampf.infoTextActive}}
-        </div>
-        <div ng-show="!wettkampf.anmeldungActive">
-          {{wettkampf.infoTextInactive}}
-        </div>
-        <br/>
-      </md-card-content>
-      <md-divider></md-divider>
-
-      <form ng-show="subscriptionActive" name="teilnehmerForm" data-ng-submit="create(teilnehmerForm.$valid)" xt-form
-            novalidate>
-        <div class="form-group">
-          <user-form readonly="false" teilnehmer="teilnehmer" allDisciplines="allDisciplines"></user-form>
-        </div>
-
+<div layout="row">
+  <div flex="25" hide-sm hide-xs></div>
+  <div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplins()">
+    <md-content layout-align="space-around center">
+      <md-card>
+        <md-card-content md-padding>
+          <h2>{{wettkampf.title}}</h2>
+          <md-divider></md-divider>
+          <p class="md-heading">Information:</p>
+          <div ng-show="wettkampf.anmeldungActive">
+            {{wettkampf.infoTextActive}}
+          </div>
+          <div ng-show="!wettkampf.anmeldungActive">
+            {{wettkampf.infoTextInactive}}
+          </div>
+          <br/>
+          <md-divider></md-divider>
+          <form ng-show="subscriptionActive" name="teilnehmerForm" data-ng-submit="create(teilnehmerForm.$valid)">
+            <div class="form-group">
+              <user-form readonly="false" teilnehmer="teilnehmer" allDisciplines="allDisciplines"></user-form>
+            </div>
+          </form>
+        </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button ng-disabled="teilnehmerForm.$invalid" class="md-primary" type="submit">Anmelden</md-button>
         </md-card-actions>
-
-        <fieldset class='form-horizontal well'>
-          <button type="submit" ng-disabled="competitorForm.$invalid"
-                  class="btn btn-primary btn-success btn-cstm-controls btn-cstm-controls-right">
-            Anmelden
-          </button>
-        </fieldset>
-      </form>
-    </md-card>
-  </md-content>
+      </md-card>
+    </md-content>
+  </div>
+  <div flex="25" hide-sm hide-xs></div>
 </div>
+
 
