@@ -82,9 +82,8 @@ var TeilnehmerSchema = new Schema({
     required: true,
     trim: true
   },
-  // TODO: change to string!!
   birthdate: {
-    type: Date,
+    type: String,
     required: true,
     trim: true
   },

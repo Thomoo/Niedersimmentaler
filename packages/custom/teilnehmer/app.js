@@ -20,6 +20,7 @@ Teilnehmer.register(function(app, auth, database, circles) {
   Teilnehmer.menus.add({
     title: 'Anmeldung',
     link: 'anmeldung',
+    roles: ['authenticated', 'anonymous'],
     menu: 'main'
   });
 

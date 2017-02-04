@@ -21,6 +21,13 @@
       birthdate: ''
     };
 
+    $scope.getJahrgang = function(birthdate) {
+      if (birthdate.length === 10)
+        return birthdate.substr(-4, 4);
+      else
+        return birthdate.substr(0, 4);
+     };
+
     $scope.cancel = function(){
       $location.path('/teilnehmer/administration');
     };
@@ -157,13 +164,9 @@
         return false;
       if (!$scope.teilnehmer.birthdate)
         return false;
-      //        $log.info('type of $scope.teilnehmer.birthdate: ' + typeof $scope.teilnehmer.birthdate);
-      //TODO: keine Ahnung wieso, birhtdate kommt als String von der DB
-      if ( typeof $scope.teilnehmer.birthdate === 'string')
-        $scope.teilnehmer.birthdate = new Date($scope.teilnehmer.birthdate);
-      if (discipline.jahrgang_von > $scope.teilnehmer.birthdate.getFullYear())
+      if (discipline.jahrgang_von > $scope.getJahrgang($scope.teilnehmer.birthdate))
         return false;
-      if (discipline.jahrgang_bis < $scope.teilnehmer.birthdate.getFullYear())
+      if (discipline.jahrgang_bis < $scope.getJahrgang($scope.teilnehmer.birthdate))
         return false;
       return true;
     };
