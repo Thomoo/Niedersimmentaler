@@ -1,4 +1,13 @@
-<div class="" data-ng-controller="TeilnehmerController" data-ng-init="loadConfig()">
-	<h1><label>{{wettkampf.title}}</label></h1>
-	<pre>Vielen Dank für Ihre Anmeldung! Ein Bestätigungsmail wurde an Sie versandt.</pre>
+<div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadConfig()" ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70">
+      <md-card>
+        <md-card-content md-padding>
+          <h1><label>{{wettkampf.title}}</label></h1>
+          <p class="md-heading">Vielen Dank für Ihre Anmeldung! Ein Bestätigungs-Email wurde an Sie versandt.</p>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
 </div>

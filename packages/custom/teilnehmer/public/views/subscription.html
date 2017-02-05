@@ -1,10 +1,9 @@
-<div layout="row">
-  <div flex="25" hide-sm hide-xs></div>
-  <div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplins()">
-    <md-content layout-align="space-around center">
+<div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplins()" ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
       <md-card>
         <form ng-show="subscriptionActive" name="teilnehmerForm" data-ng-submit="create(teilnehmerForm.$valid)">
-
           <md-card-content md-padding>
             <h2>{{wettkampf.title}}</h2>
             <md-divider></md-divider>
@@ -20,7 +19,6 @@
             <div class="form-group">
               <user-form readonly="false" teilnehmer="teilnehmer" allDisciplines="allDisciplines"></user-form>
             </div>
-
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
             <md-button ng-disabled="teilnehmerForm.$invalid" class="md-primary" type="submit">Anmelden</md-button>
@@ -29,7 +27,6 @@
       </md-card>
     </md-content>
   </div>
-  <div flex="25" hide-sm hide-xs></div>
 </div>
 
 
