@@ -1,21 +1,24 @@
-<div data-ng-controller="TeilnehmerController" data-ng-init="loadDisciplinsAndFindOne()" class="form-container">
-	<h1>Teilnehmer bearbeiten</h1>
-	<form name="competitorForm" data-ng-submit="update(competitorForm.$valid)" xt-form novalidate>
-		<div class="form-group">
-			<user-form show-award="true" readonly="false" competitor="competitor" allDisciplines="allDisciplines" ></user-form>
-		</div>
-
-		<fieldset class='form-horizontal well'>
-			<button type="button" ng-click="cancel()" class="btn btn-default btn-cstm-controls btn-cstm-controls-right">
-				Abbrechen
-			</button>
-			<button type="submit" ng-disabled="competitorForm.$invalid" class="btn btn-success btn-cstm-controls btn-cstm-controls-right">
-				Speichern
-			</button>
-			<button type="button" ng-click="deleteTeilnehmer(teilnehmer)" class="btn btn-danger btn-cstm-controls">
-				Benutzer löschen
-			</button>
-		</fieldset>
-	</form>
+<div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadDisciplinsAndFindOne()"
+     ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
+      <md-card>
+        <form name="competitorForm" data-ng-submit="update(competitorForm.$valid)">
+          <md-card-content md-padding>
+	          <h1>Teilnehmer bearbeiten</h1>
+            <div class="form-group">
+              <user-form show-award="true" readonly="false" teilnehmer="teilnehmer" allDisciplines="allDisciplines" ></user-form>
+            </div>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button type="button" ng-click="cancel()">Abbrechen</md-button>
+            <md-button type="submit" ng-disabled="competitorForm.$invalid">Speichern</md-button>
+            <md-button type="button" ng-click="deleteTeilnehmer(teilnehmer)">Benutzer löschen</md-button>
+          </md-card-actions>
+        </form>
+      </md-card>
+    </md-content>
+  </div>
 </div>
 

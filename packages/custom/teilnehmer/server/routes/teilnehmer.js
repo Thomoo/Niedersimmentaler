@@ -14,10 +14,10 @@
       .post(teilnehmer.create);
 
     app.route('/api/teilnehmer/:teilnehmerId')
-      .get(teilnehmer.show)
-      .post(requiresLogin, teilnehmer.updateWithStartNr)
-      .put(teilnehmer.update)
-      .delete(requiresLogin, teilnehmer.destroy);
+      .get(auth.isMongoId, teilnehmer.show)
+      .post(auth.isMongoId, requiresLogin, teilnehmer.updateWithStartNr)
+      .put(auth.isMongoId, teilnehmer.update)
+      .delete(auth.isMongoId, requiresLogin, teilnehmer.destroy);
 
     // Finish with setting up the teilnehmerId param
     app.param('teilnehmerId', teilnehmer.teilnehmer);

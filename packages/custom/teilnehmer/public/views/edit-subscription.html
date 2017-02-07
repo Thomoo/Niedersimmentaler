@@ -1,27 +1,37 @@
-<div class="form-container clearfix" data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplinsAndFindOne()">
-	<h1>{{wettkampf.title}}</h1>
-	<fieldset class='form-horizontal well'>
-		<legend>
-			Information
-		</legend>
-		<p ng-show="wettkampf.anmeldungActive">
-			{{wettkampf.infoTextActive}}
-			<br>
-			<br>
-			Solange die Anmeldung aktiviert ist, können die Daten hier online mutiert werden.
-		</p>
-		<p ng-show="!wettkampf.anmeldungActive">
-			{{wettkampf.infoTextInactive}}
-		</p>
-	</fieldset>
-	<form name="competitorForm" data-ng-submit="update(competitorForm.$valid)" xt-form novalidate>
-		<div class="form-group">
-			<user-form readonly="!wettkampf.anmeldungActive" competitor="competitor" allDisciplines="allDisciplines" ></user-form>
-		</div>
-		<fieldset ng-show="subscriptionActive" class='form-horizontal well'>
-			<button ng-show="wettkampf.anmeldungActive" name="saveCompetitorMutation" id="saveCompetitorMutation" class="btn btn-primary ladda-button btn-cstm-controls btn-cstm-controls-right" type="submit" ng-disabled="competitorForm.$invalid" data-color="green" data-size="s" data-style="expand-right">
-				<span class="ladda-label">Speichern</span>
-			</button>
-		</fieldset>
-	</form>
+<div flex layout="column" data-ng-controller="TeilnehmerController" data-ng-init="loadConfigAndDisciplinsAndFindOne()"
+     ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
+      <md-card>
+        <form name="competitorForm" data-ng-submit="update(competitorForm.$valid)">
+          <md-card-content md-padding>
+            <h1>{{wettkampf.title}}</h1>
+            <md-divider></md-divider>
+            <p class="md-heading">Information:</p>
+            <div ng-show="wettkampf.anmeldungActive">
+              {{wettkampf.infoTextActive}}
+              <br>
+              <br>
+              Solange die Anmeldung aktiviert ist, können die Daten hier online mutiert werden.
+            </div>
+            <div ng-show="!wettkampf.anmeldungActive">
+              {{wettkampf.infoTextInactive}}
+            </div>
+            <md-divider></md-divider>
+            <div class="form-group">
+              <user-form readonly="!wettkampf.anmeldungActive" teilnehmer="teilnehmer"
+                         allDisciplines="allDisciplines"></user-form>
+            </div>
+          </md-card-content>
+          <md-card-actions ng-show="subscriptionActive" layout="row" layout-align="end center">
+            <md-button ng-show="wettkampf.anmeldungActive" ng-disabled="competitorForm.$invalid"
+                       name="saveCompetitorMutation" id="saveCompetitorMutation"
+                       class="md-primary" type="submit">Speichern
+            </md-button>
+          </md-card-actions>
+        </form>
+      </md-card>
+    </md-content>
+  </div>
 </div>

@@ -22,10 +22,13 @@
     };
 
     $scope.getJahrgang = function(birthdate) {
-      if (birthdate.length === 10)
-        return birthdate.substr(-4, 4);
-      else
-        return birthdate.substr(0, 4);
+      if (birthdate) {
+        if (birthdate.length === 10) {
+          return birthdate.substr(-4, 4);
+        } else {
+          return birthdate.substr(0, 4);
+        }
+      }
      };
 
     $scope.cancel = function(){

@@ -10,7 +10,7 @@
       url: '/teilnehmer/subscription/confirmation',
       templateUrl: 'teilnehmer/views/subscription-confirmation.html'
     }).state('edit subscription by id', {
-      url: '/teilnehmer/subscription/:competitorId',
+      url: '/teilnehmer/subscription/:teilnehmerId',
       templateUrl: 'teilnehmer/views/edit-subscription.html'
     }).state('teilnehmerverwaltung', {
       url: '/teilnehmer/administration',

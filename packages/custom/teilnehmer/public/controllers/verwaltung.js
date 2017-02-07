@@ -5,7 +5,7 @@
   function VerwaltungsController($scope, $location, $filter, $log, Global, Teilnehmer) {
     $scope.global = Global;
     $scope.package = {
-      name: 'competitor'
+      name: 'teilnehmer'
     };
 
     $scope.find = function () {
@@ -35,7 +35,7 @@
     };
 
     $scope.navigateToDetails = function (competitor) {
-      $location.path('/competitor/' + competitor._id);
+      $location.path('/teilnehmer/' + competitor._id);
     };
 
     $scope.resetSearchForm = function () {

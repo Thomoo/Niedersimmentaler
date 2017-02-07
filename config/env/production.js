@@ -69,12 +69,12 @@ module.exports = {
       enabled: false
     }
   },
-  emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
-  mailer: {
-    service: 'SERVICE_PROVIDER',
-    auth: {
-      user: 'EMAIL_ID',
-      pass: 'PASSWORD'
+  emailFrom : 'niedersimmentaler@turnenspiez.ch', // sender address like ABC <abc@example.com>
+  mailer : {
+    host : 'mail.turnenspiez.ch',
+    auth : {
+      user : 'niedersimmentaler@turnenspiez.ch',
+      pass : '<pass>'
     }
   },
   secret: 'SOME_TOKEN_SECRET'
