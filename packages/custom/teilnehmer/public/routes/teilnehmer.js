@@ -18,9 +18,9 @@
       // resolve: {
       //   loggedin: isCompetitorAdmin
       // }
-    }).state('edit competitor by id', {
+    }).state('edit teilnehmer by id', {
       url: '/teilnehmer/:teilnehmerId',
-      templateUrl: 'teilnehmer/views/edit-competitor.html',
+      templateUrl: 'teilnehmer/views/edit-teilnehmer.html',
       // resolve: {
       //   loggedin: isCompetitorAdmin
       // }

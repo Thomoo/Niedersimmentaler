@@ -10,8 +10,8 @@
 
     $scope.find = function () {
       $log.info('find called...');
-      Teilnehmer.query(function (competitors) {
-        $scope.competitors = competitors;
+      Teilnehmer.query(function (teilnehmende) {
+        $scope.teilnehmende = teilnehmende;
       });
     };
 
@@ -24,18 +24,18 @@
       text: 'weiblich'
     }];
 
-    $scope.showGender = function (competitor) {
+    $scope.showGender = function (teilnehmer) {
       var selected = [];
-      if (competitor.gender) {
+      if (teilnehmer.gender) {
         selected = $filter('filter')($scope.genders, {
-          value: competitor.gender
+          value: teilnehmer.gender
         });
       }
       return selected.length ? selected[0].text : 'Not set';
     };
 
-    $scope.navigateToDetails = function (competitor) {
-      $location.path('/teilnehmer/' + competitor._id);
+    $scope.navigateToDetails = function (teilnehmer) {
+      $location.path('/teilnehmer/' + teilnehmer._id);
     };
 
     $scope.resetSearchForm = function () {
@@ -46,16 +46,16 @@
       return (!$scope.global.search || (!$scope.global.search.startnr && !$scope.global.search.birthdate && !$scope.global.search.$));
     };
 
-    $scope.generateStartNr = function (competitor) {
-      if (!competitor.startnr) {
-        competitor.$toggleStartNr();
+    $scope.generateStartNr = function (teilnehmer) {
+      if (!teilnehmer.startnr) {
+        teilnehmer.$toggleStartNr();
       }
     };
 
-    $scope.removeStartNr = function (competitor) {
-      var msg = 'Willst du die Startnummer von ' + competitor.firstname + ' ' + competitor.name + ' wirklich entfernen? \n\nDies darf nur gemacht werden, wenn der Teilnehmer die Nummer noch nicht abgeholt hat!';
-      if (confirm(msg) && competitor.startnr) {
-        competitor.$toggleStartNr();
+    $scope.removeStartNr = function (teilnehmer) {
+      var msg = 'Willst du die Startnummer von ' + teilnehmer.firstname + ' ' + teilnehmer.name + ' wirklich entfernen? \n\nDies darf nur gemacht werden, wenn der Teilnehmer die Nummer noch nicht abgeholt hat!';
+      if (confirm(msg) && teilnehmer.startnr) {
+        teilnehmer.$toggleStartNr();
       }
     };
   }

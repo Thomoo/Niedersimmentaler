@@ -35,7 +35,7 @@
       <md-card>
         <md-card-content>
           <fieldset class="well well-sm">
-            <legend>Einträge ({{(competitors| filter:global.search:strict).length }})</legend>
+            <legend>Einträge ({{(teilnehmende| filter:global.search:strict).length }})</legend>
             <table class="table table-bordered table-hover table-striped">
               <tr>
                 <th>Start-Nr.</th>
@@ -48,44 +48,44 @@
                 <th></th>
               </tr>
               <tr
-                ng-repeat="competitor in competitors | filter:global.search:strict | orderBy : 'firstname' | orderBy : 'name' ">
+                ng-repeat="teilnehmer in teilnehmende | filter:global.search:strict | orderBy : 'firstname' | orderBy : 'name' ">
                 <td>
-                  <span class="pull-left">{{ competitor.startnr }}</span>
-                  <div ng-show="competitor.startnr" class="dropdown pull-right">
+                  <span class="pull-left">{{ teilnehmer.startnr }}</span>
+                  <div ng-show="teilnehmer.startnr" class="dropdown pull-right">
                     <a data-toggle="dropdown" data-target="#" href="">
                       <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#" ng-click="removeStartNr(competitor)" tabindex="-1" role="menuitem">Startnummer
+                      <li><a href="#" ng-click="removeStartNr(teilnehmer)" tabindex="-1" role="menuitem">Startnummer
                         wieder
                         entfernen</a></li>
-                      <!--<li><a href="#"  ng-click="removeStartNr(competitor)" tabindex="-1" role="menuitem">Startnummer manuell überschreiben</a></li>-->
+                      <!--<li><a href="#"  ng-click="removeStartNr(teilnehmer)" tabindex="-1" role="menuitem">Startnummer manuell überschreiben</a></li>-->
                     </ul>
                   </div>
                 </td>
                 <td>
-                  {{ competitor.name }}
+                  {{ teilnehmer.name }}
                 </td>
                 <td>
-                  {{ competitor.firstname }}
+                  {{ teilnehmer.firstname }}
                 </td>
                 <td>
-                  {{ competitor.birthdate | date:'yyyy' }}
+                  {{ teilnehmer.birthdate | date:'yyyy' }}
                 </td>
                 <td>
-                  {{ showGender(competitor) }}
+                  {{ showGender(teilnehmer) }}
                 </td>
                 <td>
-                  {{ competitor.location }}
+                  {{ teilnehmer.location }}
                 </td>
                 <td>
-                  {{ competitor.society }}
+                  {{ teilnehmer.society }}
                 </td>
                 <td style="white-space: nowrap">
                   <div class="buttons" ng-show="!rowform.$visible">
-                    <button class="btn btn-info" ng-click="navigateToDetails(competitor)">Bearbeiten</button>
-                    <button ng-show="!competitor.startnr" class="btn btn-primary"
-                            ng-click="generateStartNr(competitor)">
+                    <button class="btn btn-info" ng-click="navigateToDetails(teilnehmer)">Bearbeiten</button>
+                    <button ng-show="!teilnehmer.startnr" class="btn btn-primary"
+                            ng-click="generateStartNr(teilnehmer)">
                       Start-Nr. vergeben
                     </button>
                   </div>

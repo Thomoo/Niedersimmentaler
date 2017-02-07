@@ -151,7 +151,7 @@
           //   }, 500);
           // }
           if ($scope.global.isCompetitorAdmin)
-            $location.path('teilnehmer/administration');
+            $location.path('teilnehmer/verwaltung');
         });
       } else {
         $scope.submitted = true;
