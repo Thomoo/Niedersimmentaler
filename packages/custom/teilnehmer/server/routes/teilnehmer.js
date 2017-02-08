@@ -1,6 +1,14 @@
 (function () {
   'use strict';
 
+  // Teilnehmer authorization helpers
+  var hasAuthorization = function(req, res, next) {
+    if (!req.user.isAdmin()) {
+      return res.send(401, 'User is not authorized');
+    }
+    next();
+  };
+
   /* jshint -W098 */
   // The Package is past automatically as first parameter
   module.exports = function (Teilnehmer, app, auth, database, circles) {
@@ -17,7 +25,7 @@
       .get(auth.isMongoId, teilnehmer.show)
       .post(auth.isMongoId, requiresLogin, teilnehmer.updateWithStartNr)
       .put(auth.isMongoId, teilnehmer.update)
-      .delete(auth.isMongoId, requiresLogin, teilnehmer.destroy);
+      .delete(auth.isMongoId, requiresLogin, hasAuthorization, teilnehmer.destroy);
 
     // Finish with setting up the teilnehmerId param
     app.param('teilnehmerId', teilnehmer.teilnehmer);

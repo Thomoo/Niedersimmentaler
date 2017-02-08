@@ -14,13 +14,13 @@
       templateUrl: 'teilnehmer/views/edit-subscription.html'
     }).state('teilnehmerverwaltung', {
       url: '/teilnehmer/administration',
-      templateUrl: 'teilnehmer/views/verwaltung.html',
+      templateUrl: 'teilnehmer/views/verwaltung.html'
       // resolve: {
       //   loggedin: isCompetitorAdmin
       // }
     }).state('edit teilnehmer by id', {
       url: '/teilnehmer/:teilnehmerId',
-      templateUrl: 'teilnehmer/views/edit-teilnehmer.html',
+      templateUrl: 'teilnehmer/views/edit-teilnehmer.html'
       // resolve: {
       //   loggedin: isCompetitorAdmin
       // }

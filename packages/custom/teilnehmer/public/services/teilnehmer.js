@@ -2,7 +2,7 @@
 
 angular.module('mean.teilnehmer').factory('Teilnehmer', ['$resource',
   function ($resource) {
-    return $resource('/api/teilnehmer/:teilnemerId', {
+    return $resource('/api/teilnehmer/:teilnehmerId', {
       teilnehmerId: '@_id'
     }, {
       update: {method: 'PUT'},

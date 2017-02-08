@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'),
     Teilnehmer = mongoose.model('Teilnehmer'),
-    _ = require('lodash'), async = require('async'),
+    _ = require('lodash'),
+    async = require('async'),
     config = require('meanio').getConfig(),
     nodemailer = require('nodemailer'),
     mailTemplates = require('../views/mailtemplate');
@@ -155,15 +156,13 @@ exports.update = function (req, res) {
  * Delete a teilnehmer
  */
 exports.destroy = function (req, res) {
-
   console.info('deleting user');
-
   var teilnehmer = req.teilnehmer;
 
   teilnehmer.remove(function (err) {
     if (err) {
       return res.json(500, {
-        error: 'Cannot delete the teilnehmer'
+        error: 'Cannot delete the teilnehmer' + err
       });
     }
     res.json(teilnehmer);
@@ -185,11 +184,10 @@ exports.all = function (req, res) {
   Teilnehmer.find().sort('-created').exec(function (err, teilnehmer) {
     if (err) {
       return res.json(500, {
-        error: 'Cannot list the teilnehmer'
+        error: 'Cannot list the teilnehmer' + err
       });
     }
     res.json(teilnehmer);
 
   });
-
 };
