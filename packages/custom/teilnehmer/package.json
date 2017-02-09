@@ -6,9 +6,11 @@
     "name": "mean scaffold"
   },
   "mean": "0.7.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-messages": "1.6.2"
+  },
   "license": "MIT",
   "scripts": {
-    "postinstall" : "bower install"
+    "postinstall": "bower install"
   }
 }

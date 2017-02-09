@@ -4,16 +4,16 @@
   function Teilnehmer($stateProvider) {
 
     $stateProvider.state('anmeldung', {
-      url: '/teilnehmer/subscription',
-      templateUrl: 'teilnehmer/views/subscription.html'
+      url: '/teilnehmer/anmeldung',
+      templateUrl: 'teilnehmer/views/anmeldung.html'
     }).state('confirm subscription', {
-      url: '/teilnehmer/subscription/confirmation',
-      templateUrl: 'teilnehmer/views/subscription-confirmation.html'
+      url: '/teilnehmer/anmeldung/bestaetigung',
+      templateUrl: 'teilnehmer/views/anmeldung-bestaetigung.html'
     }).state('edit subscription by id', {
-      url: '/teilnehmer/subscription/:teilnehmerId',
-      templateUrl: 'teilnehmer/views/edit-subscription.html'
+      url: '/teilnehmer/anmeldung/:teilnehmerId',
+      templateUrl: 'teilnehmer/views/edit-anmeldung.html'
     }).state('teilnehmerverwaltung', {
-      url: '/teilnehmer/administration',
+      url: '/teilnehmer/verwaltung',
       templateUrl: 'teilnehmer/views/verwaltung.html'
       // resolve: {
       //   loggedin: isCompetitorAdmin

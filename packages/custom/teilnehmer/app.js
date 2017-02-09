@@ -13,6 +13,8 @@ var Teilnehmer = new Module('teilnehmer');
  */
 Teilnehmer.register(function(app, auth, database, circles) {
 
+  Teilnehmer.angularDependencies(['ngMessages']);
+
   //We enable routing. By default the Package Object is passed to the routes
   Teilnehmer.routes(app, auth, database, circles);
 

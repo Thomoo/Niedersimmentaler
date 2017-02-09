@@ -21,6 +21,8 @@
       birthdate: ''
     };
 
+    $scope.userFormValid = false;
+
     $scope.getJahrgang = function(birthdate) {
       if (birthdate) {
         if (birthdate.length === 10) {
@@ -32,7 +34,7 @@
      };
 
     $scope.cancel = function(){
-      $location.path('/teilnehmer/administration');
+      $location.path('/teilnehmer/verwaltung');
     };
 
     // $scope.subscriptionActive = $scope.global.isCompetitorAdmin;
@@ -58,7 +60,7 @@
           disciplines : $scope.selectDeclaredDisciplines($scope.allDisciplines)
         });
         teilnehmerToCreate.$save(function(response) {
-          $location.path('/teilnehmer/subscription/confirmation');
+          $location.path('/teilnehmer/anmeldung/bestaetigung');
         });
       } else {
         $scope.teilnehmer.submitted = true;
@@ -150,6 +152,7 @@
           //     saveCompetitorMutationButton.stop();
           //   }, 500);
           // }
+          //TODO: das geht noch nicht...
           if ($scope.global.isCompetitorAdmin)
             $location.path('teilnehmer/verwaltung');
         });
@@ -195,7 +198,7 @@
       var msg = 'Soll der Teilnehmer wirklich gelöscht werden? \n\nDies kann nicht mehr rückgängig gemacht werden!';
       if (confirm(msg)) {
         teilnehmer.$delete(function () {
-          $location.path('teilnehmer/administration');
+          $location.path('teilnehmer/verwaltung');
         });
       }
     };
