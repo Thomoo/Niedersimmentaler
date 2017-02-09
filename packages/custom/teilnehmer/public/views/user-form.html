@@ -38,8 +38,7 @@
   <div class="md-block" layout="row" layout-xs="column">
     <md-input-container flex="50">
       <label>PLZ</label>
-      <input name="zip" ng-model="teilnehmer.zip" ng-readonly="readonly" required
-             ng-pattern="/^[1-9][0-9]{3}$/" md-maxlength="4">
+      <input name="zip" ng-model="teilnehmer.zip" ng-readonly="readonly" required ng-pattern="/^[1-9][0-9]{3}$/">
       <div ng-messages="teilnehmerForm.zip.$error">
         <div ng-message="required">Die Postleitzahl ist ein Pflichtfeld!</div>
         <div ng-message="pattern">Sieht nicht wie eine korrekte Postleitzahl aus!</div>
