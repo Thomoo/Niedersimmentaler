@@ -1,43 +1,53 @@
-<div data-ng-controller="WettkampfController" data-ng-init="loadWettkampf()">
-  <h1>Administration</h1>
+<div flex layout="column" data-ng-controller="WettkampfController" data-ng-init="loadWettkampf()"
+     ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
+      <md-card>
+        <md-card-content md-padding>
+          <h2>Wettkampf verwalten</h2>
+          <md-divider></md-divider>
+          <br/>
+          <form name="wettkampfForm" data-ng-submit="saveWettkampf(wettkampfForm.$valid)" novalidate>
+            <md-input-container class="md-block">
+              <label>Wettkampftitel</label>
+              <input name="wettkampftitel" ng-model="wettkampf.title" required>
+              <div ng-messages="wettkampfForm.wettkampftitel.$error">
+                <div ng-message="required">Die Wettkampftitel ist ein Pflichtfeld!</div>
+              </div>
+            </md-input-container>
 
-  <!-- Wettkampf verwalten -->
-  <form name="wettkampfVerwaltenForm" data-ng-submit="saveWettkampf(wettkampfVerwaltenForm.$valid)" novalidate>
-    <fieldset class='form-horizontal well'>
-      <legend>
-        Wettkampf verwalten
-      </legend>
-      <div class="form-group">
-        <label for="wettkampftitel" class="col-md-4 control-label">Wettkampftitel</label>
-        <div class="col-md-8">
-          <input required id="wettkampftitel" type="text" data-ng-model="wettkampf.title" name="wettkampftitel" placeholder="Titel" class="form-control" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="infoTextInactive" class="col-md-4 control-label">Info Text Anmeldung inaktiv</label>
-        <div class="col-md-8">
-          <textarea name="infoTextInactive" data-ng-model="wettkampf.infoTextInactive" id="infoTextInactive" placeholder="Bitte Text hier eingeben" class="form-control"></textarea>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label for="infoTextActive" class="col-md-4 control-label">Info Text Anmeldung aktiv</label>
-        <div class="col-md-8">
-          <textarea name="infoTextActive" data-ng-model="wettkampf.infoTextActive" id="infoTextActive" placeholder="Bitte Text hier eingeben" class="form-control"></textarea>
-        </div>
-      </div>
+            <md-input-container class="md-block">
+              <label>Info Text Anmeldung inaktiv</label>
+              <textarea name="infoTextInaktiv" ng-model="wettkampf.infoTextInactive" required></textarea>
+              <div ng-messages="wettkampfForm.infoTextInaktiv.$error">
+                <div ng-message="required">Dieser Infotext ist ein Pflichtfeld!</div>
+              </div>
+            </md-input-container>
 
-      <div class="form-group">
-        <label for="aktivieren" class="col-md-4 control-label">Anmeldung aktivieren</label>
-        <div class="col-md-8">
-          <input name="aktivieren" data-ng-model="wettkampf.anmeldungActive" id="aktivieren" type="checkbox" class="checkbox" />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary" name="saveWettkampf" id="saveWettkampf" data-color="green" data-size="s" data-style="expand-left">
-        <span>Speichern</span>
-      </button>
-    </fieldset>
-  </form>
+            <md-input-container class="md-block">
+              <label>Info Text Anmeldung aktiv</label>
+              <textarea name="infoTextAktiv" ng-model="wettkampf.infoTextActive" required></textarea>
+              <div ng-messages="wettkampfForm.infoTextAktiv.$error">
+                <div ng-message="required">Dieser Infotext ist ein Pflichtfeld!</div>
+              </div>
+            </md-input-container>
 
+            <md-input-container class="md-block">
+              <md-checkbox ng-model="wettkampf.anmeldungActive" class="md-primary" aria-label="Anmeldung aktivieren">
+                Anmeldung aktivieren
+              </md-checkbox>
+            </md-input-container>
+
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="!wettkampfForm.$dirty || wettkampfForm.$invalid">
+              Speichern
+            </md-button>
+
+          </form>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
 </div>
 

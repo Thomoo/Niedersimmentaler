@@ -1,11 +1,12 @@
 <div flex layout="column" data-ng-controller="VerwaltungController" data-ng-init="find()" ng-cloak>
   <div layout="row">
     <div flex hide-xs hide-sm hide-md flex-gt-md="10"></div>
-    <md-content flex flex-gt-md="80" class="md-padding">
+    <md-content flex flex-gt-md="80" layout-align="space-around center">
       <md-card>
-        <md-card-content>
-          <h1>Teilnehmerverwaltung</h1>
-
+        <md-card-content class="md-padding">
+          <h2>Teilnehmerverwaltung</h2>
+          <md-divider></md-divider>
+          <br/>
           <form>
             <fieldset class="competitor-filter-input-group well well-sm">
               <legend>Filter</legend>
