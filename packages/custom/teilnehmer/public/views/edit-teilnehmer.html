@@ -6,10 +6,10 @@
       <md-card>
         <md-card-content md-padding>
           <h1>Teilnehmer bearbeiten</h1>
-          <div class="form-group">
-            <user-form show-award="true" valid="userFormValid" readonly="false" teilnehmer="teilnehmer"
-                       allDisciplines="allDisciplines"></user-form>
-          </div>
+          <user-form show-award="true" valid="userFormValid" readonly="false" teilnehmer="teilnehmer"
+                     allDisciplines="allDisciplines"></user-form>
+          <teilnehmer-disziplin disciplines="allDisciplines" readonly="false" show-award="true"
+                                teilnehmer="teilnehmer"></teilnehmer-disziplin>
         </md-card-content>
         <md-card-actions layout="row" layout-align="space-between center">
           <md-button ng-click="deleteTeilnehmer(teilnehmer)" class="md-raised">Teilnehmer löschen</md-button>
