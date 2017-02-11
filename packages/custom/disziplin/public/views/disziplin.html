@@ -7,7 +7,7 @@
           <h2>Disziplinen verwalten</h2>
           <md-divider></md-divider>
           <br/>
-          <table class="table table-bordered table-hover table-condensed">
+          <table class="disziplin-table-group">
             <tr>
               <th>Disziplin</th>
               <th>Bezeichnung (druck)</th>
@@ -58,29 +58,28 @@
                 <form editable-form name="rowform" onbeforesave="saveDisziplin($data, disziplin)"
                       oncancel="cancelDisziplin($index, disziplin)" ng-show="rowform.$visible"
                       class="form-buttons form-inline" shown="inserted == disziplin">
-                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                    save
-                  </button>
-                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
-                          class="btn btn-default">
-                    cancel
-                  </button>
+                  <md-button type="submit" ng-disabled="rowform.$waiting" class="md-raised md-primary">
+                    Speichern
+                  </md-button>
+                  <md-button ng-click="rowform.$cancel()" ng-disabled="rowform.$waiting" class="md-raised">
+                    Abbrechen
+                  </md-button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
-                  <button class="btn btn-primary" ng-click="rowform.$show()">
-                    edit
-                  </button>
-                  <button class="btn btn-danger" ng-click="removeDisziplin(disziplin)">
-                    del
-                  </button>
+                  <md-button class="md-raised md-primary" ng-click="rowform.$show()">
+                    Bearbeiten
+                  </md-button>
+                  <md-button class="md-raised md-warn" ng-click="removeDisziplin(disziplin)">
+                    Löschen
+                  </md-button>
                 </div>
               </td>
             </tr>
           </table>
 
-          <button class="btn btn-default" ng-click="addDisziplin()">
-            Add row
-          </button>
+          <md-button class="md-raised md-primary" ng-click="addDisziplin()">
+            Disziplin addieren
+          </md-button>
         </md-card-content>
       </md-card>
     </md-content>
