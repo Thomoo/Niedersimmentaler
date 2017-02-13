@@ -15,9 +15,13 @@
           </div>
           <br/>
           <md-divider></md-divider>
-          <user-form ng-show="subscriptionActive" valid="userFormValid" readonly="false" teilnehmer="teilnehmer"
-                     allDisciplines="allDisciplines">
+          <user-form ng-show="subscriptionActive"
+                     readonly="false" valid="userFormValid" teilnehmer="teilnehmer">
           </user-form>
+          <teilnehmer-disziplin ng-show="subscriptionActive"
+                                disciplines="allDisciplines"
+                                readonly="false" show-award="false"
+                                teilnehmer="teilnehmer"></teilnehmer-disziplin>
         </md-card-content>
         <md-card-actions ng-show="subscriptionActive" layout="row" layout-align="end center">
           <md-button ng-disabled="!userFormValid" ng-click="create(userFormValid)" class="md-raised md-primary">

@@ -4,7 +4,6 @@
     <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
     <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
       <md-card>
-        <form name="competitorForm" data-ng-submit="update(competitorForm.$valid)">
           <md-card-content md-padding>
             <h1>{{wettkampf.title}}</h1>
             <md-divider></md-divider>
@@ -19,18 +18,17 @@
               {{wettkampf.infoTextInactive}}
             </div>
             <md-divider></md-divider>
-            <div class="form-group">
-              <user-form readonly="!wettkampf.anmeldungActive" teilnehmer="teilnehmer"
-                         allDisciplines="allDisciplines"></user-form>
-            </div>
+            <user-form readonly="!wettkampf.anmeldungActive" teilnehmer="teilnehmer" valid="userFormValid"></user-form>
+            <teilnehmer-disziplin disciplines="allDisciplines"
+                                  readonly="!wettkampf.anmeldungActive" show-award="false"
+                                  teilnehmer="teilnehmer"></teilnehmer-disziplin>
           </md-card-content>
           <md-card-actions ng-show="subscriptionActive" layout="row" layout-align="end center">
-            <md-button ng-show="wettkampf.anmeldungActive" ng-disabled="competitorForm.$invalid"
-                       name="saveCompetitorMutation" id="saveCompetitorMutation"
-                       class="md-primary" type="submit">Speichern
+            <md-button ng-click="update(userFormValid)" ng-show="wettkampf.anmeldungActive"
+                       ng-disabled="!userFormValid" class="md-raised md-primary">
+              Speichern
             </md-button>
           </md-card-actions>
-        </form>
       </md-card>
     </md-content>
   </div>
