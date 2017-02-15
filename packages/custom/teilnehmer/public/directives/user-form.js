@@ -4,10 +4,16 @@ angular.module('mean.teilnehmer').directive('userForm', ['$log', function () {
   return {
     restrict: 'E',
     scope: {
-      readonly: '=',
+      readonly: '=?',
       teilnehmer: '=',
-      valid: '='
+      valid: '=?',
+      dirty: '=?'
     },
-    templateUrl: 'teilnehmer/views/user-form.html'
+    controllerAs: 'ctrl',
+    bindToController: true,
+    templateUrl: 'teilnehmer/views/user-form.html',
+    controller: function () {
+      var ctrl = this;
+    }
   };
 }]);

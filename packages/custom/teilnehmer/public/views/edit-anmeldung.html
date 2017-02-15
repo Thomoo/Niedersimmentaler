@@ -18,14 +18,15 @@
               {{wettkampf.infoTextInactive}}
             </div>
             <md-divider></md-divider>
-            <user-form readonly="!wettkampf.anmeldungActive" teilnehmer="teilnehmer" valid="userFormValid"></user-form>
+            <user-form readonly="!wettkampf.anmeldungActive" teilnehmer="teilnehmer"
+                       valid="teilnehmerFormValid" dirty="teilnehmerFormDirty"></user-form>
             <teilnehmer-disziplin disciplines="allDisciplines"
                                   readonly="!wettkampf.anmeldungActive" show-award="false"
-                                  teilnehmer="teilnehmer"></teilnehmer-disziplin>
+                                  teilnehmer="teilnehmer" dirty="disziplinFormDirty"></teilnehmer-disziplin>
           </md-card-content>
           <md-card-actions ng-show="subscriptionActive" layout="row" layout-align="end center">
-            <md-button ng-click="update(userFormValid)" ng-show="wettkampf.anmeldungActive"
-                       ng-disabled="!userFormValid" class="md-raised md-primary">
+            <md-button ng-click="update(teilnehmerFormValid)" ng-show="wettkampf.anmeldungActive"
+                       ng-disabled="!teilnehmerFormValid || !(teilnehmerFormDirty || disziplinFormDirty)" class="md-raised md-primary">
               Speichern
             </md-button>
           </md-card-actions>

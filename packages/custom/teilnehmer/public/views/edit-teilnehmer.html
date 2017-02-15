@@ -6,7 +6,7 @@
       <md-card>
         <md-card-content md-padding>
           <h2>Teilnehmer bearbeiten</h2>
-          <user-form readonly="false" teilnehmer="teilnehmer" valid="userFormValid"></user-form>
+          <user-form readonly="false" teilnehmer="teilnehmer" valid="teilnehmerFormValid"></user-form>
           <teilnehmer-disziplin disciplines="allDisciplines"
                                 readonly="false" show-award="true"
                                 teilnehmer="teilnehmer"></teilnehmer-disziplin>
@@ -14,7 +14,7 @@
         <md-card-actions layout="row" layout-align="space-between center">
           <md-button ng-click="deleteTeilnehmer(teilnehmer)" class="md-raised">Teilnehmer löschen</md-button>
           <md-button ng-click="cancel()" class="md-raised">Abbrechen</md-button>
-          <md-button ng-click="update(userFormValid)" ng-disabled="!userFormValid" class="md-raised md-primary">
+          <md-button ng-click="update(teilnehmerFormValid)" ng-disabled="!teilnehmerFormValid" class="md-raised md-primary">
             Speichern
           </md-button>
         </md-card-actions>

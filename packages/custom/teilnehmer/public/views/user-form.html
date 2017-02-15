@@ -1,9 +1,10 @@
 <form name="teilnehmerForm">
-  <span style="display:none">{{ valid = teilnehmerForm.$valid}}</span>
+  <span style="display:none">{{ ctrl.valid = teilnehmerForm.$valid}}</span>
+  <span style="display:none">{{ ctrl.dirty = teilnehmerForm.$dirty}}</span>
 
   <h3 class="md-heading">Personalien:</h3>
 
-  <md-radio-group ng-disabled="readonly" required layout='row' layout-xs="column" ng-model="teilnehmer.gender">
+  <md-radio-group ng-disabled="readonly" required layout='row' layout-xs="column" ng-model="ctrl.teilnehmer.gender">
     <label>Geschlecht*</label>
     <md-radio-button value="female" class="md-primary">weiblich</md-radio-button>
     <md-radio-button value="male" class="md-primary"> männlich</md-radio-button>
@@ -12,7 +13,7 @@
   <div class="md-block" layout="row" layout-xs="column">
     <md-input-container flex="50">
       <label>Name</label>
-      <input name="name" ng-model="teilnehmer.name" ng-readonly="readonly" required>
+      <input name="name" ng-model="ctrl.teilnehmer.name" ng-readonly="readonly" required>
       <div ng-messages="teilnehmerForm.name.$error">
         <div ng-message="required">Der Name ist ein Pflichtfeld!</div>
       </div>
@@ -20,7 +21,7 @@
 
     <md-input-container flex="50">
       <label>Vorname</label>
-      <input name="firstname" ng-model="teilnehmer.firstname" ng-readonly="readonly" required>
+      <input name="firstname" ng-model="ctrl.teilnehmer.firstname" ng-readonly="readonly" required>
       <div ng-messages="teilnehmerForm.firstname.$error">
         <div ng-message="required">Der Vorname ist ein Pflichtfeld!</div>
       </div>
@@ -29,7 +30,7 @@
 
   <md-input-container class="md-block">
     <label>Adresse</label>
-    <input name="address" ng-model="teilnehmer.address" ng-readonly="readonly" required>
+    <input name="address" ng-model="ctrl.teilnehmer.address" ng-readonly="readonly" required>
     <div ng-messages="teilnehmerForm.address.$error">
       <div ng-message="required">Die Adresse ist ein Pflichtfeld!</div>
     </div>
@@ -38,7 +39,7 @@
   <div class="md-block" layout="row" layout-xs="column">
     <md-input-container flex="50">
       <label>PLZ</label>
-      <input name="zip" ng-model="teilnehmer.zip" ng-readonly="readonly" required ng-pattern="/^[1-9][0-9]{3}$/">
+      <input name="zip" ng-model="ctrl.teilnehmer.zip" ng-readonly="readonly" required ng-pattern="/^[1-9][0-9]{3}$/">
       <div ng-messages="teilnehmerForm.zip.$error">
         <div ng-message="required">Die Postleitzahl ist ein Pflichtfeld!</div>
         <div ng-message="pattern">Sieht nicht wie eine korrekte Postleitzahl aus!</div>
@@ -47,7 +48,7 @@
 
     <md-input-container flex="50">
       <label>Ort</label>
-      <input name="ort" type="text" ng-model="teilnehmer.location" ng-readonly="readonly" required>
+      <input name="ort" type="text" ng-model="ctrl.teilnehmer.location" ng-readonly="readonly" required>
       <div ng-messages="teilnehmerForm.ort.$error">
         <div ng-message="required">Der Ort ist ein Pflichtfeld!</div>
       </div>
@@ -56,12 +57,12 @@
 
   <md-input-container class="md-block">
     <label>Verein</label>
-    <input ng-model="teilnehmer.society" ng-readonly="readonly">
+    <input ng-model="ctrl.teilnehmer.society" ng-readonly="readonly">
   </md-input-container>
 
   <md-input-container class="md-block">
     <label>Email</label>
-    <input name="email" required type="email" ng-model="teilnehmer.email"
+    <input name="email" required type="email" ng-model="ctrl.teilnehmer.email"
            minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
     <div ng-messages="teilnehmerForm.email.$error" role="alert">
       <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
@@ -72,7 +73,7 @@
 
   <md-input-container class="md-block">
     <label>Geburtsdatum (z.B. 02.03.2003)</label>
-    <input name="geburi" ng-model="teilnehmer.birthdate" ng-readonly="readonly"
+    <input name="geburi" ng-model="ctrl.teilnehmer.birthdate" ng-readonly="readonly"
            required ng-pattern="/^[0-3][0-9][.][0|1][0-9][.]2[0-9]{3}$/" md-maxlength="10">
     <div ng-messages="teilnehmerForm.geburi.$error">
       <div ng-message="required">Das Geburtsdatum ist ein Pflichtfeld!</div>

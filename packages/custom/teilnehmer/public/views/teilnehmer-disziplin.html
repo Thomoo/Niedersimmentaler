@@ -1,31 +1,33 @@
-<h3>Wettkämpfe:</h3>
-<div flex layout="row" layout-xs="column">
-  <div ng-repeat="discipline in ctrl.disciplines | filter:ctrl.isPossibleDiscipline">
-    <md-card flex>
-      <md-card-content md-padding>
-        <md-input-container class="md-block">
-          <md-checkbox ng-disabled="readonly" ng-model="discipline.declared"
-                       class="md-primary" aria-label="teilnahme">
-            Teilnahme
-          </md-checkbox>
-        </md-input-container>
-        <h3>
-          {{discipline.disziplin}}
-        </h3>
-        <h3 ng-if="discipline.result">
-          Resultat: {{discipline.formatFnc(discipline.result)}}
-        </h3>
-        <h3 ng-if="discipline.result">
-          Rang: {{discipline.rank}}
-        </h3>
-        <md-input-container ng-show="ctrl.showAward">
-          <label>Qualifiziert</label>
-          <input name="qualifiziert" ng-model="discipline.award" ng-disabled="ctrl.readonly">
-        </md-input-container>
-      </md-card-content>
-    </md-card>
+<form name="disziplinForm">
+  <span style="display:none">{{ ctrl.dirty = disziplinForm.$dirty}}</span>
+  <h3>Wettkämpfe:</h3>
+  <div flex layout="row" layout-xs="column">
+    <div ng-repeat="discipline in ctrl.disciplines | filter:ctrl.isPossibleDiscipline">
+      <md-card flex>
+        <md-card-content md-padding>
+          <md-input-container class="md-block">
+            <md-checkbox ng-disabled="readonly" ng-model="discipline.declared"
+                         class="md-primary" aria-label="teilnahme">
+              Teilnahme
+            </md-checkbox>
+          </md-input-container>
+          <h3>
+            {{discipline.disziplin}}
+          </h3>
+          <h3 ng-if="discipline.result">
+            Resultat: {{discipline.formatFnc(discipline.result)}}
+          </h3>
+          <h3 ng-if="discipline.result">
+            Rang: {{discipline.rank}}
+          </h3>
+          <md-input-container ng-show="ctrl.showAward">
+            <label>Qualifiziert</label>
+            <input name="qualifiziert" ng-model="discipline.award" ng-disabled="ctrl.readonly">
+          </md-input-container>
+        </md-card-content>
+      </md-card>
+    </div>
   </div>
-</div>
-
+</form>
 
 

@@ -16,7 +16,7 @@
           <br/>
           <md-divider></md-divider>
           <user-form ng-show="subscriptionActive"
-                     readonly="false" valid="userFormValid" teilnehmer="teilnehmer">
+                     readonly="false" valid="teilnehmerFormValid" teilnehmer="teilnehmer">
           </user-form>
           <teilnehmer-disziplin ng-show="subscriptionActive"
                                 disciplines="allDisciplines"
@@ -24,7 +24,7 @@
                                 teilnehmer="teilnehmer"></teilnehmer-disziplin>
         </md-card-content>
         <md-card-actions ng-show="subscriptionActive" layout="row" layout-align="end center">
-          <md-button ng-disabled="!userFormValid" ng-click="create(userFormValid)" class="md-raised md-primary">
+          <md-button ng-disabled="!teilnehmerFormValid" ng-click="create(teilnehmerFormValid)" class="md-raised md-primary">
             Anmelden
           </md-button>
         </md-card-actions>

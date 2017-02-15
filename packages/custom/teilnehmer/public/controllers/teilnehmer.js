@@ -3,7 +3,7 @@
 
   /* jshint -W098 */
 
-  function TeilnehmerController($scope, Global, Teilnehmer, $stateParams, $location, $log, Wettkampf, Disziplin) {
+  function TeilnehmerController($scope, $state, Global, Teilnehmer, $stateParams, $location, $log, Wettkampf, Disziplin) {
     $scope.global = Global;
     $scope.package = {
       name: 'teilnehmer'
@@ -21,7 +21,10 @@
       birthdate: ''
     };
 
-    $scope.userFormValid = false;
+    $scope.teilnehmerFormValid = false;
+
+    $scope.teilnehmerFormDirty = false;
+    $scope.disziplinFormDirty = false;
 
     $scope.getJahrgang = function(birthdate) {
       if (birthdate) {
@@ -153,8 +156,11 @@
           //   }, 500);
           // }
           //TODO: das geht noch nicht...
-          if ($scope.global.isCompetitorAdmin)
+          if ($scope.global.isCompetitorAdmin) {
             $location.path('teilnehmer/verwaltung');
+          } else {
+            $state.reload();
+          }
         });
       } else {
         $scope.submitted = true;
@@ -218,6 +224,6 @@
     .module('mean.teilnehmer')
     .controller('TeilnehmerController', TeilnehmerController);
 
-  TeilnehmerController.$inject = ['$scope', 'Global', 'Teilnehmer', '$stateParams', '$location', '$log', 'Wettkampf', 'Disziplin'];
+  TeilnehmerController.$inject = ['$scope', '$state', 'Global', 'Teilnehmer', '$stateParams', '$location', '$log', 'Wettkampf', 'Disziplin'];
 
 })();

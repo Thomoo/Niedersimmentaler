@@ -8,7 +8,8 @@ angular.module('mean.teilnehmer').directive('teilnehmerDisziplin', ['$log', func
       showAward: '=',
       readonly: '=',
       disciplines: '=',
-      teilnehmer: '='
+      teilnehmer: '=',
+      dirty: '=?'
     },
     templateUrl: 'teilnehmer/views/teilnehmer-disziplin.html',
     controllerAs: 'ctrl',
