@@ -15,7 +15,7 @@ var mongoose = require('mongoose'),
  * Send confirmation email
  */
 function sendMail(mailOptions) {
-  var transport = nodemailer.createTransport('SMTP', config.mailer);
+  var transport = nodemailer.createTransport(config.mailer);
   console.info('sendMail...: ' + JSON.stringify(mailOptions));
   transport.sendMail(mailOptions, function (err, response) {
     if (err) {
@@ -35,6 +35,7 @@ var sendConfirmationMail = function (req, teilnehmer) {
     function () {
       var mailOptions = {
         to: teilnehmer.email,
+        bcc: config.emailBcc,
         from: config.emailFrom
       };
       mailOptions = mailTemplates.confirmation_email(req, teilnehmer, mailOptions);
