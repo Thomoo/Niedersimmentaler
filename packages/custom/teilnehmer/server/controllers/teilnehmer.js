@@ -175,6 +175,11 @@ exports.destroy = function (req, res) {
  * Show a teilnehmer
  */
 exports.show = function (req, res) {
+  if (req.teilnehmer.birthdate.length > 10) {
+    // backwards compatibility
+    var date = new Date(req.teilnehmer.birthdate);
+    req.teilnehmer.birthdate = '00.00.' + date.getFullYear();
+  }
   res.json(req.teilnehmer);
 };
 
@@ -188,6 +193,13 @@ exports.all = function (req, res) {
         error: 'Cannot list the teilnehmer' + err
       });
     }
+    teilnehmer.forEach(function(teilnehmer) {
+      if (teilnehmer.birthdate.length > 10) {
+        // backwards compatibility
+        var date = new Date(teilnehmer.birthdate);
+        teilnehmer.birthdate = '00.00.' + date.getFullYear();
+      }
+    });
     res.json(teilnehmer);
 
   });
