@@ -1,0 +1,33 @@
+<div data-ng-controller="ResultController">
+  <div>
+    <h1>Startlisten</h1>
+    <br/>
+    <div class="alert alert-info no-print"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;<strong>Bitte
+      Listen über die Browserfunktion drucken (Ctrl-P).</strong></div>
+  </div>
+
+  <div ng-repeat="discipline in global.selectedDisciplines | orderBy:'bezeichnung'">
+    <fieldset class='form-horizontal well page-break-after'>
+      <legend>{{ discipline.bezeichnung }}</legend>
+      <table class="table table-bordered table-hover table-condensed table-striped">
+        <tr>
+          <th width="5%">Start-Nr.</th>
+          <th width="15%">Name</th>
+          <th width="15%">Vorname</th>
+          <th width="15%">Ort/Verein</th>
+          <th width="5%">Jahrgang</th>
+        </tr>
+        <tr
+          ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderBy: 'startnr' | filter: {startnr: '!!'}">
+          <!-- <tr ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderBy: 'startnr'"> -->
+          <td>{{ competitor.startnr }}</td>
+          <td>{{ competitor.name }}</td>
+          <td>{{ competitor.firstname }}</td>
+          <td ng-show="competitor.society">{{ competitor.society }}</td>
+          <td ng-show="!competitor.society">{{ competitor.location }}</td>
+          <td>{{ competitor.birthdate.substr(-4, 4) }}</td>
+        </tr>
+      </table>
+    </fieldset>
+  </div>
+</div>
