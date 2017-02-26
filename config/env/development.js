@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  db: 'mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
+  db: 'mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || '127.0.0.1') + '/mean-dev',
   debug: true,
   logging: {
     format: 'tiny'
@@ -13,7 +13,7 @@ module.exports = {
   },
   hostname: 'http://localhost:3000',
   app: {
-    name: 'MEAN - A Modern Stack - Development'
+    name: 'Niedersimmentaler - Development'
   },
   strategies: {
     local: {
@@ -51,12 +51,15 @@ module.exports = {
       enabled: false
     }
   },
-  emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
-  mailer: {
-    service: 'SERVICE_PROVIDER', // Gmail, SMTP
-    auth: {
-      user: 'EMAIL_ID',
-      pass: 'PASSWORD'
+  emailFrom : '<email>', // sender address like ABC <abc@example.com>
+  emailBcc: '<email>',
+  mailer : {
+    service: 'SMTP',
+    host: '<hostAdress>',
+    ignoreTLS: true,
+    auth : {
+      user : '<email>',
+      pass : '<pass>'
     }
   },
   secret: 'SOME_TOKEN_SECRET'

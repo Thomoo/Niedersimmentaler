@@ -69,11 +69,14 @@ module.exports = {
       enabled: false
     }
   },
-  emailFrom : 'niedersimmentaler@turnenspiez.ch', // sender address like ABC <abc@example.com>
+  emailFrom : '<email>', // sender address like ABC <abc@example.com>
+  emailBcc: '<email>',
   mailer : {
-    host : 'mail.turnenspiez.ch',
+    service: 'SMTP',
+    host: '<hostAdress>',
+    ignoreTLS: true,
     auth : {
-      user : 'niedersimmentaler@turnenspiez.ch',
+      user : '<email>',
       pass : '<pass>'
     }
   },
