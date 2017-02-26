@@ -1,3 +1,14 @@
 .MEAN-Logo {
   height: 80%
 }
+
+.home-image {
+  border: 1px solid #c0c0c0 !important;
+  padding: 0;
+  text-align: center;
+  min-height: 500px;
+  background-repeat: no-repeat;
+  background-position: 0 -100px;
+  background-size: cover;
+  margin-top: 20px;
+}
