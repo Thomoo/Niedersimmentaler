@@ -1,66 +1,74 @@
-<div class="" data-ng-controller="ResultController">
-	<h1>Resultat erfassen</h1>
+<div flex layout="column" data-ng-controller="ResultController" ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
+      <md-card>
+        <md-card-content md-padding>
+          <h2>Resultat erfassen</h2>
 
-	<!-- <form name="enterResultForm" data-ng-submit="saveResult(enterResultForm.$valid)" novalidate> -->
+          <form name="enterResultForm" data-ng-submit="updateResult()" xt-form novalidate>
+            <br/>
+            <md-input-container flex="50" class="md-block">
+              <label>Disziplin</label>
+              <md-select ng-model="discipline" required>
+                <md-option ng-repeat="discipline in global.disciplines | orderBy:'bezeichnung'" ng-value="discipline">
+                  {{discipline.bezeichnung}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <br/>
+            <md-input-container flex="50" class="md-block">
+              <label>Start Nr.</label>
+              <md-select ng-model="competitor" required>
+                <md-option ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderBy:'startnr' | filter: {startnr: '!!'}" ng-value="competitor">
+                  {{competitor.startnr}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <br/>
+            <br/>
+            <md-input-container flex="50" class="md-block">
+              <label>Resultat {{discipline.placeholder}}</label>
+              <input name="result" type="text" ng-model="result" ng-pattern="discipline.validate" placeholder="{{discipline.placeholder}}" required>
+              <div ng-messages="enterResultForm.result.$error">
+                <div ng-message="required">Das Resultat ist ein Pflichtfeld!</div>
+                <div ng-message="pattern">Bitte ein gültiges Format eingeben! ({{discipline.placeholder}})</div>
+              </div>
+            </md-input-container>
 
-	<fieldset class='form-horizontal well'>
-		<legend>
-			Erfassung
-		</legend>
-		<form name="enterResultForm" data-ng-submit="updateResult()" xt-form novalidate>
-			<div class="form-group">
-				<label for"discipline" class="col-md-4 control-label">Disziplin</label>
-				<div class="col-md-8">
-					<select id="discipline" class="form-control" required ng-model="discipline" ng-options="discipline.bezeichnung for discipline in global.disciplines | orderBy:'bezeichnung'"></select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="startnr" class="col-md-4 control-label">Start Nr.</label>
-				<div class="col-md-8">
-					<!-- <input id="startnr" required type="number" placeholder="999" min="1" max="999" class="form-control" ng-model="startnr"/> -->
-					<select id="startnr" class="form-control" required ng-model="competitor" ng-options="competitor.startnr for competitor in global.competitorsPerDiscipline[discipline._id] | orderBy:'startnr' | filter: {startnr: '!!'}"></select>
-				</div>
-				<!-- <div class="col-md-4"></div> -->
-			</div>
-			<div class="form-group">
-				<label for="result" class="col-md-4 control-label">Resultat</label>
-				<div class="col-md-8">
-					<input id="result" required type="text" placeholder="{{discipline.placeholder}}" ng-pattern="discipline.validate" name="result" class="form-control" ng-model="result"
-                           msg-required="Dies ist ein Pflichtfeld!"
-                           xt-validate />
-				</div>
-				<!-- <div class="col-md-2"></div> -->
-			</div>
 
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-success btn-cstm-controls btn-cstm-controls-right" ng-disabled="enterResultForm.$invalid">
-					Speichern
-				</button>
-			</div>
-		</form>
-	</fieldset>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="enterResultForm.$invalid">
+              Speichern
+            </md-button>
 
-	<fieldset class='form-horizontal well'>
-		<legend>
-			Verlauf
-		</legend>
-		<table class="table table-bordered table-hover table-condensed table-striped" ng-show="(global.enteredResults | filter:criteria).length">
-			<tr>
-				<th>Nr.</th>
-				<th>Name</th>
-				<th>Vorname</th>
-				<th>Verein/Ort</th>
-				<th>Disziplin</th>
-				<th>Resultat</th>
-			</tr>
-			<tr ng-repeat="result in global.enteredResults | reverse">
-				<td> {{ result.competitor.startnr }} </td>
-				<td> {{ result.competitor.name }} </td>
-				<td> {{ result.competitor.firstname }} </td>
-				<td ng-show="result.competitor.society">{{ result.competitor.society }}</td><td ng-show="!result.competitor.society">{{ result.competitor.location }}</td>
-				<td> {{ result.discipline.disziplin }} </td>
-				<td> {{ result.discipline.formatFnc(result.result) }} </td>
-			</tr>
-		</table>
-	</fieldset>
+          </form>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-content md-padding>
+          <h3 class="md-heading">Verlauf</h3>
+            <table class="table table-bordered table-hover table-condensed table-striped"
+                   ng-show="(global.enteredResults | filter:criteria).length">
+              <tr>
+                <th>Nr.</th>
+                <th>Name</th>
+                <th>Vorname</th>
+                <th>Verein/Ort</th>
+                <th>Disziplin</th>
+                <th>Resultat</th>
+              </tr>
+              <tr ng-repeat="result in global.enteredResults | reverse">
+                <td> {{ result.competitor.startnr }}</td>
+                <td> {{ result.competitor.name }}</td>
+                <td> {{ result.competitor.firstname }}</td>
+                <td ng-show="result.competitor.society">{{ result.competitor.society }}</td>
+                <td ng-show="!result.competitor.society">{{ result.competitor.location }}</td>
+                <td> {{ result.discipline.disziplin }}</td>
+                <td> {{ result.discipline.formatFnc(result.result) }}</td>
+              </tr>
+            </table>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
 </div>
