@@ -1,22 +1,41 @@
-<div data-ng-controller="ResultController">
+<div flex layout="column" data-ng-controller="ResultController" data-ng-init="loadWettkampf()"
+     ng-cloak>
+  <div layout="row">
+    <div flex-gt-md="25" flex-gt-sm="15" hide-sm hide-xs></div>
+    <md-content flex flex-gt-md="50" flex-gt-sm="70" layout-align="space-around center">
+      <md-card>
+        <md-card-content md-padding>
+          <h1>Start- und Ranglisten</h1>
+          <md-input-container class="md-block">
+            <md-button ng-disabled="selectedNoDisciplines" ng-click="navRankings()" class="md-raised">
+              Ranglisten erstellen
+            </md-button>
+            <md-button ng-disabled="selectedNoDisciplines" ng-click="navStartLists()" class="md-raised">
+              Startlisten erstellen
+            </md-button>
+            <md-checkbox ng-model="global.showStartnummer" class="md-primary">
+              Startnummer in Rangliste anzeigen
+            </md-checkbox>
+          </md-input-container>
 
-    <h1>Start- und Ranglisten</h1>
+          <md-input-container class="md-block">
+            <md-checkbox ng-model="selectAllDisciplines"
+                         ng-change="refreshSelectAllDisciplines()"
+                         class="md-primary">
+              <strong>alle auswählen</strong>
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container class="md-block"
+                              ng-repeat="discipline in global.disciplines | orderBy:'bezeichnung' | filter:search:strict">
+            <md-checkbox ng-model="global.selectedDisciplinesIds[discipline._id]"
+                         ng-change="refreshSelectedDisciplines()"
+                         class="md-primary">
+              {{ discipline.bezeichnung }}
+            </md-checkbox>
+          </md-input-container>
 
-    <fieldset class="well well-sm">
-        <legend>Verwalten</legend>
-        <table class="table table-bordered table-hover table-condensed table-striped">
-            <tr>
-                <th>Disziplin</th>
-                <th><input type="checkbox" ng-model="selectAllDisciplines" ng-change="refreshSelectAllDisciplines()">&nbsp; alle</th>
-            </tr>
-            <tr ng-repeat="discipline in global.disciplines | orderBy:'bezeichnung' | filter:search:strict">
-                <td>{{ discipline.bezeichnung }}</td>
-                <td><input type="checkbox" ng-model="global.selectedDisciplinesIds[discipline._id]" ng-change="refreshSelectedDisciplines()"></td>
-            </tr>
-        </table>
-        <button class="btn btn-success btn-cstm-controls-right" ng-click="navRankings()" ng-disabled="selectedNoDisciplines">Ranglisten erstellen</button>
-        <button class="btn btn-success btn-cstm-controls btn-cstm-controls-right" ng-click="navStartLists()" ng-disabled="selectedNoDisciplines">Startlisten erstellen</button>
-        <input type="checkbox" ng-model="global.showStartnummer">Startnummer in Rangliste anzeigen
-    </fieldset>
-
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
 </div>
