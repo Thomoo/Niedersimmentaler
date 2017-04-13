@@ -5,11 +5,11 @@
     <div class="alert alert-info no-print"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;<strong>Bitte
       Listen über die Browserfunktion drucken (Ctrl-P).</strong></div>
   </div>
-
   <div ng-repeat="discipline in global.selectedDisciplines | orderBy:'bezeichnung'">
-    <fieldset class='form-horizontal well page-break-after'>
-      <legend>{{ discipline.bezeichnung }}</legend>
-      <table class="table table-bordered table-hover table-condensed table-striped">
+    <br>
+    <fieldset class='fieldset-table form-horizontal well page-break-after'>
+      <legend><h3>{{ discipline.bezeichnung }}</h3></legend>
+      <table>
         <tr>
           <th width="5%">Start-Nr.</th>
           <th width="15%">Name</th>

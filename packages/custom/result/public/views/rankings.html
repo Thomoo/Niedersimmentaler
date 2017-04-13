@@ -1,16 +1,15 @@
 <div data-ng-controller="ResultController">
   <div>
     <h1>Ranglisten</h1>
-    <br/>
     <div class="alert alert-info no-print"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;<strong>Bitte
       Listen über die Browserfunktion drucken (Ctrl-P).</strong></div>
   </div>
-
   <div ng-repeat="discipline in global.selectedDisciplines | orderBy:'bezeichnung'">
-    <fieldset class='form-horizontal well page-break-after'>
-      <legend>{{ discipline.bezeichnung }}</legend>
+    <br>
+    <fieldset class='fieldset-table form-horizontal well page-break-after'>
+      <legend><h3>{{ discipline.bezeichnung }}</h3></legend>
       <!-- <table class="table table-bordered table-hover table-condensed table-striped page-break-after"> -->
-      <table ng-if="true" class="table table-bordered table-hover table-condensed table-striped">
+      <table ng-if="true">
         <tr>
           <th width="5%">Rang</th>
           <th ng-if="global.showStartnummer" width="5%">Start-Nr.</th>
@@ -18,8 +17,8 @@
           <th width="13%">Vorname</th>
           <th width="19%">Ort/Verein</th>
           <th width="5%">Jahrgang</th>
-          <th width="15%" style="text-align: right">Resultat</th>
-          <th width="3%" style="text-align: center">Q</th>
+          <th width="15%">Resultat</th>
+          <th width="3%">Q</th>
         </tr>
         <tr
           ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderByRank: discipline._id  | filter: {startnr: '!!'}">

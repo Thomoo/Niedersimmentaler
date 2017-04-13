@@ -10,4 +10,17 @@
   .page-break-after {
     page-break-after: always;
   }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid #c0c0c0;
+    padding: 5px;
+  }
+
+  .fieldset-table {
+    border-radius: 5px;
+  }
 }
