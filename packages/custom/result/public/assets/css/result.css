@@ -1,26 +1,28 @@
 @media print {
   /*h1 {page-break-before: always;}*/
-
   .content {
     margin-top: 0 !important;
   }
+
   .no-print {
     display: none;
   }
+
   .page-break-after {
     page-break-after: always;
   }
-
-  table {
-    border-collapse: collapse;
-  }
-
-  table, th, td {
-    border: 1px solid #c0c0c0;
-    padding: 5px;
-  }
-
-  .fieldset-table {
-    border-radius: 5px;
-  }
 }
+
+.fieldset-table table {
+  border-collapse: collapse;
+}
+
+.fieldset-table th, .fieldset-table td {
+  border: 1px solid #c0c0c0;
+  padding: 5px;
+}
+
+.fieldset-table {
+  border-radius: 5px;
+}
+
