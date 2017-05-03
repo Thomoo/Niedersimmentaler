@@ -20,8 +20,8 @@ Wettkampf.register(function(app, auth, database, circles) {
   Wettkampf.menus.add({
     title: 'Wettkampf',
     link: 'wettkampf',
-    roles: ['authenticated'],
-    menu: 'main'
+    roles: ['admin'],
+    menu: 'admin'
   });
 
   /**

@@ -22,8 +22,8 @@ Disziplin.register(function(app, auth, database, circles) {
   Disziplin.menus.add({
     title: 'Disziplinen',
     link: 'disziplin',
-    roles: ['authenticated'],
-    menu: 'main'
+    roles: ['admin'],
+    menu: 'admin'
   });
 
   /**
