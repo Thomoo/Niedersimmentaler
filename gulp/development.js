@@ -117,7 +117,7 @@ function devServeTask () {
       });
       return tasks;
     },
-    nodeArgs: ['--debug'],
+    nodeArgs: ['--inspect'],
     args: [],
     stdout: false,
     delay: 500

@@ -15,29 +15,23 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.css$/,
-      loaders: ['style', 'css?sourceMap']
+      loaders: ['style-loader', 'css-loader?sourceMap']
     }, {
       test: /\.scss$/,
-      loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass?sourceMap']
     }, {
       test: /\.less$/,
-      loaders: ['style', 'css?sourceMap', 'less?sourceMap']
+      loaders: ['style-loader', 'css-loader?sourceMap', 'less?sourceMap']
     }, {
       test: /\.js$/,
       exclude: /(node_modules|bower_components|lib)/,
-      loader: 'babel?presets[]=es2015&presets[]=stage-1'
+      loader: 'babel-loader?presets[]=es2015&presets[]=stage-1'
     }, {
       test: /(.*)\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'url-loader'
     }]
   },
   resolve: {
-    modulesDirectories: ['node_modules']
-  },
-  plugins: [
-    // new ngAnnotatePlugin({
-    //   add: true,
-    //   // other ng-annotate options here
-    // })
-  ]
+    modules: ['node_modules']
+  }
 }
