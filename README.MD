@@ -337,7 +337,7 @@ MyPackage.register(function(app, auth, database, Tokens) {
 
 > Packages when in code are used in a capitalized form
 
-###Angular Modules and Dependencies
+### Angular Modules and Dependencies
 
 Every package registration automatically creates a corresponding angular module of the form `mean.[package-name]`
 
@@ -353,9 +353,9 @@ MyPackage.angularDependencies(['ngDragDrop']);
 ```
 
 > See the assets section for an example how to add external libraries to
-> the client such as the `gDragDrop `javascript library
+> the client such as the `gDragDrop`javascript library
 
-###Assets and Aggregation
+### Assets and Aggregation
 
 All assets such as images, javascript libraries and CSS stylesheets should be within `public/assets` of the package file structure.
 
@@ -718,3 +718,4 @@ You can adjust the CPU_COUNT variable up or down based on how much memory your a
 
 ## License
 We believe that MEAN should be free and easy to integrate within your existing projects so we chose [The MIT License](http://opensource.org/licenses/MIT)
+
