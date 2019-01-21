@@ -1,7 +1,7 @@
 {
   "name": "Niedersimmentaler",
   "description": "Tool to administrate a contests",
-  "version": "1.0",
+  "version": "1.0.0",
   "private": false,
   "author": "Tom Huber",
   "contributors": "https://github.com/linnovate/mean/graphs/contributors",
@@ -63,15 +63,15 @@
     "view-helpers": "0.1.5"
   },
   "devDependencies": {
-    "babel-core": "latest",
-    "babel-loader": "latest",
-    "babel-preset-es2015": "latest",
-    "babel-preset-stage-1": "latest",
-    "css-loader": "latest",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^0.28.9",
     "del": "latest",
     "expect.js": "latest",
-    "file-loader": "latest",
-    "gulp": "latest",
+    "file-loader": "^1.1.6",
+    "gulp": "^3.9.1",
     "gulp-concat": "latest",
     "gulp-csslint": "latest",
     "gulp-cssmin": "latest",
@@ -116,11 +116,11 @@
     "supertest": "latest",
     "through": "latest",
     "url-loader": "latest",
-    "webpack": "latest",
-    "webpack-dev-middleware": "latest",
-    "webpack-dev-server": "latest",
-    "webpack-hot-middleware": "latest",
-    "webpack-stream": "latest"
+    "webpack": "^3.12.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-stream": "^4.0.0"
   },
   "snyk": true
 }
