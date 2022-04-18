@@ -1,14 +1,18 @@
 {
   "name": "Niedersimmentaler",
-  "description": "Tool to administrate a contests",
+  "description": "Tool to administrate a contest",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x",
+    "npm": "6.4.1"
+  },
   "private": false,
   "author": "Tom Huber",
   "contributors": "https://github.com/linnovate/mean/graphs/contributors",
   "mean": "1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linnovate/mean.git"
+    "url": "https://github.com/Thomoo/Niedersimmentaler.git"
   },
   "license": "MIT",
   "scripts": {

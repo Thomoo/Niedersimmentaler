@@ -24,14 +24,14 @@
           ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderByRank: discipline._id  | filter: {startnr: '!!'}">
           <td>{{ competitor.disciplinesById[discipline._id].printRank }}</td>
           <td ng-if="global.showStartnummer">{{ competitor.startnr }}</td>
-          <td>{{ competitor.name }}</td>
-          <td>{{ competitor.firstname }}</td>
+          <td style="white-space: nowrap">{{ competitor.name }}</td>
+          <td style="white-space: nowrap">{{ competitor.firstname }}</td>
           <td ng-show="competitor.society">{{ competitor.society }}</td>
           <td ng-show="!competitor.society">{{ competitor.location }}</td>
           <td>{{ competitor.birthdate.substr(-4, 4) }}</td>
-          <td style="text-align: right">
-            <div ng-if="competitor.disciplinesById[discipline._id].result">{{
-              discipline.formatFnc(competitor.disciplinesById[discipline._id].result) }}
+          <td style="text-align: right; white-space: nowrap">
+            <div ng-if="competitor.disciplinesById[discipline._id].result" >{{
+              discipline.formatFnc(competitor.disciplinesById[discipline._id].result)}}
             </div>
           </td>
           <td style="text-align: center">{{ competitor.disciplinesById[discipline._id].award }}</td>

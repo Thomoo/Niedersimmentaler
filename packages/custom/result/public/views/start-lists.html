@@ -21,8 +21,8 @@
           ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderBy: 'startnr' | filter: {startnr: '!!'}">
           <!-- <tr ng-repeat="competitor in global.competitorsPerDiscipline[discipline._id] | orderBy: 'startnr'"> -->
           <td>{{ competitor.startnr }}</td>
-          <td>{{ competitor.name }}</td>
-          <td>{{ competitor.firstname }}</td>
+          <td style="white-space: nowrap">{{ competitor.name }}</td>
+          <td style="white-space: nowrap">{{ competitor.firstname }}</td>
           <td ng-show="competitor.society">{{ competitor.society }}</td>
           <td ng-show="!competitor.society">{{ competitor.location }}</td>
           <td>{{ competitor.birthdate.substr(-4, 4) }}</td>
